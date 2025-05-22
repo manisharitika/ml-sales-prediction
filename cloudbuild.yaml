@@ -3,7 +3,7 @@ steps:
     args:
       [
         'build',
-        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app:$SHORT_SHA',
+        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app-ml-sales:$SHORT_SHA',
         '.'
       ]
     id: 'Build Docker image'

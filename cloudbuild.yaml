@@ -3,7 +3,7 @@ steps:
     args:
       [
         'build',
-        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app-ml-sales:$SHORT_SHA',
+        '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app:$SHORT_SHA',
         '.'
       ]
     id: 'Build Docker image'
@@ -12,7 +12,7 @@ steps:
     args:
       [
         'push',
-        'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app-ml-sales:$SHORT_SHA'
+        'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app:$SHORT_SHA'
       ]
     id: 'Push to Artifact Registry'
 
@@ -20,7 +20,7 @@ steps:
     entrypoint: 'gcloud'
     args:
       [
-        'run', 'deploy', 'cloud-run-app',
+        'run', 'deploy', 'cloud-run-app-ml-sales-task1',
         '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/manisha-repo/cloud-run-app-ml-sales:$SHORT_SHA',
         '--region', 'us-central1',
         '--platform', 'managed',
@@ -33,5 +33,5 @@ options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
 substitutions:
-  _SERVICE_NAME: cloud-run-app-ml-sales
+  _SERVICE_NAME: cloud-run-app
 
